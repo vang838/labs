@@ -17,5 +17,5 @@ int main(int argc, char *argv[])
     int convertStringToInt = atoi(argv[3]); // Convert third argument from string to integer
 
     printf("Hello %s and %s, I am %d years old today!\n", argv[1], argv[2], convertStringToInt);
-    return 0
+    return 0;
 }
