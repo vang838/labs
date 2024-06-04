@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 /******************************************************
- * 
+ * Triangle Function
  * Prints the basic triangle pattern if user inputs 1 
  * Outer for loop iterates through each line given from user input
  * Inner loop prints i amount of stars on the i'th line
@@ -32,7 +32,7 @@ void printTriangle(int lines)
 }
 
 /****************************************************
- * 
+ * Reverse Function
  * Prints reverse triangle pattern if user inputs 2
  * Outer for loops iterates from total number of lines down to 1
  * Inner for loop prints i amount of stars on the i'th line
@@ -51,7 +51,7 @@ void printReverseTriangle(int lines)
 }
 
 /*******************************************
- * 
+ * Pyramid Function
  * Prints pyramid pattern if user inputs 3
  * Outer for loop iterates through each line given by user input
  * First inner loop prints spaces to center the asterisks on the i'th line
@@ -75,31 +75,81 @@ void printPyramid(int lines)
     }
 }
 
-int main(int argc, char *argv[]) 
+/*******************************************************************
+ * main 
+ * User is asked for 3 pattern types (patternType) labeled 0 to 3
+ * 0 = Quit, 1 = Triangle, 2 = Reverse Triangle, 3 = Pyramid
+ * 
+ * User is then asked for how many lines (numOfLines) to print
+ * numOfLines must be a positive integer
+********************************************************************/
+int main() 
 {
-    if(argc != 3) // Checker for correct number of arguments
+    int patternType;
+
+    while(1) // Used to repeat the prompt if the pattern input is invalid
     {
-        printf("Invalid number of arguments: %s %s %s\n", argv[0], argv[1], argv[2]);
-        printf("Correct Usage: ./pattern <valid pattern input> <number of lines>\n");
-        return 1;
+        printf("Pattern Types: \n");
+        printf("    0: Quit\n");
+        printf("    1: Triangle \n");
+        printf("    2: Reverse Triangle \n");
+        printf("    3: Pyramid \n");
+        printf("\nInput: ");
+        scanf("%d", &patternType);
+
+        if(patternType < 0 || patternType > 3) 
+        {
+            printf("Pattern Types: \n");
+            printf("    0: Quit\n");
+            printf("    1: Triangle \n");
+            printf("    2: Reverse Triangle \n");
+            printf("    3: Pyramid \n");
+            printf("\nInput: ");
+            continue;
+        }
+
+        if(patternType == 0)
+        {
+            printf("You have chosen to quit\n");
+            break;
+        }
+
+        while(1) // while loop to repeatedly print lines based on user input unless user inputs 0 which exits the inner loop and repeats the outer loop
+        {
+            int numOfLines;
+            printf("\nEnter the number of lines to print (0 to change pattern): ");
+            scanf("%d", &numOfLines);
+
+            if(numOfLines < 0)
+            {
+                printf("Invalid Input: Only positive integers are accepted\n");
+                continue;
+            }
+
+            if(numOfLines == 0)
+            {
+                break;
+            }
+
+            // Triangle Pattern
+            if (patternType == 1) 
+            {
+                printTriangle(numOfLines);
+            } 
+
+            //Reverse Triangle Pattern
+            if (patternType == 2) 
+            {
+                printReverseTriangle(numOfLines);
+            } 
+
+            // Pyramid Pattern
+            if (patternType == 3) 
+            {
+                printPyramid(numOfLines);
+            }
+        }
     }
 
-    int userPatternInput = atoi(argv[1]);
-    if(userPatternInput < 1 || userPatternInput > 3) // Check for valid pattern input
-    {
-        printf("%d is not a valid pattern input ( Valid inputs are 1 for triangle, 2 for reverse triangle, 3 for pyramid )\n", userPatternInput);
-        return 1;
-    }
-
-    int numOfLines = atoi(argv[2]);
-    if(numOfLines < 1 || numOfLines > 10) // Check for valid number of line input
-    {
-        printf("Integers less than 1 or greater than 10 are not allowed!\n");
-    }  
-
-    if(userPatternInput == 1) printTriangle(numOfLines); 
-
-    if(userPatternInput == 2) printReverseTriangle(numOfLines);
-
-    else printPyramid(numOfLines);
+    return 0;
 }
