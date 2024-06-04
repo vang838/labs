@@ -89,22 +89,17 @@ int main()
 
     while(1) // Used to repeat the prompt if the pattern input is invalid
     {
-        printf("Pattern Types: \n");
+        printf("\nValid Pattern Inputs: \n");
         printf("    0: Quit\n");
         printf("    1: Triangle \n");
         printf("    2: Reverse Triangle \n");
         printf("    3: Pyramid \n");
-        printf("\nInput: ");
+        printf("Input: ");
         scanf("%d", &patternType);
 
         if(patternType < 0 || patternType > 3) 
         {
-            printf("Pattern Types: \n");
-            printf("    0: Quit\n");
-            printf("    1: Triangle \n");
-            printf("    2: Reverse Triangle \n");
-            printf("    3: Pyramid \n");
-            printf("\nInput: ");
+            printf("\n\n\n\nInvalid Pattern Input!\n");
             continue;
         }
 
