@@ -3,7 +3,8 @@
 *
 * Description: reads grid size and calls all the functions necessary for the quest program.
 *******************************************************************/
-
+#include <stdio.h>
+#include <stdiolib.h>
 #include "quest.h"
 
 int main() {
