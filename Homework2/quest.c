@@ -1,7 +1,23 @@
+/******************************************
+ * Author: vang838@uwm.edu
+ * 
+ * Created: 6/11/24
+ *****************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "quest.h"
 
+/***************************************************************
+ * Function: readGrid
+ * 
+ * Description:
+ * 
+ * Takes 3 parameters from the user's input
+ * 
+ * Outer For Loop iterates through the rows
+ * Inner For Loop iterates through the columns
+ ***************************************************************/
 void readGrid(int rows, int columns, int grid[rows][columns])
 {
     for(int i = 0; i < rows; i++)
@@ -13,6 +29,12 @@ void readGrid(int rows, int columns, int grid[rows][columns])
     }
 }
 
+/********************************************
+ * Function: computeStats
+ * 
+ * Description:
+ * Array count contains the amount of each obstacle in the grid
+ ********************************************/
 void computeStats(int rows, int columns, int grid[rows][columns], int count[SIZE])
 {
     for(int i = 0; i < rows; i++)
@@ -24,6 +46,12 @@ void computeStats(int rows, int columns, int grid[rows][columns], int count[SIZE
     }
 }
 
+/********************************************
+ * Function: printStats
+ * 
+ * Description:
+ * Prints the amount of obstacles contained in the count array
+ *******************************************/
 void printStats(int count[SIZE])
 {
     printf("\nCount of Obstacles:\n");
@@ -34,6 +62,13 @@ void printStats(int count[SIZE])
     printf("Venomous Snakes: %d\n", count[4]);
 }
 
+/**************************************************************
+ * Function: findPath
+ * 
+ * Description:
+ * Finds and prints the path from start to the goal in the grid
+ * The term "die" is printed at the end if there is no valid path to the goal
+ *************************************************************/
 void findPath(int rows, int columns, int grid[rows][columns])
 {
     int i = 0, j = 0;
