@@ -4,12 +4,6 @@
 
 void readGrid(int rows, int columns, int grid[rows][columns])
 {
-    if(rows < 2 || rows >> 10 || columns < 2 || columns > 10)
-    {
-        printf("Invalid Inputs!\n");
-        printf("Inputs must be > 2 || < 10\n");
-    }
-
     for(int i = 0; i < rows; i++)
     {
         for(int j = 0; j < columns; j++)
@@ -19,7 +13,7 @@ void readGrid(int rows, int columns, int grid[rows][columns])
     }
 }
 
-void computeStats(int rows, int columns, int grid[rows][columns])
+void computeStats(int rows, int columns, int grid[rows][columns], int count[SIZE])
 {
     for(int i = 0; i < rows; i++)
     {
@@ -32,7 +26,7 @@ void computeStats(int rows, int columns, int grid[rows][columns])
 
 void printStats(int count[SIZE])
 {
-    printf("Count of Obstacles:\n");
+    printf("\nCount of Obstacles:\n");
     printf("Safe Zones: %d\n", count[0]);
     printf("Werewolves: %d\n", count[1]);
     printf("Treacherous Swamps: %d\n", count[2]);
@@ -42,21 +36,28 @@ void printStats(int count[SIZE])
 
 void findPath(int rows, int columns, int grid[rows][columns])
 {
-    int i, j = 0;
-    printf("Correct Path:\n")
+    int i = 0, j = 0;
+    printf("\nPath:\n");
+    printf("start ");
 
-    while(i < rows - 1 || j < columns -1)
+    while(i < rows - 1 || j < columns - 1)
     {
         if(j < columns - 1 && grid[i][j + 1] == 0)
         {
-            printf("right\n")
+            j++;
+            printf("right ");
         }
 
-        if(i < rows - 1 && grid[i+1][j] == 0)
+        else if(i < rows - 1 && grid[i+1][j] == 0)
         {
-            printf("down\n");
+            i++;
+            printf("down ");
         }
 
-        else printf("You died!\n");
+        else 
+        {
+            printf("died ");
+            return;
+        }
     }
 }

@@ -4,7 +4,7 @@
 * Description: reads grid size and calls all the functions necessary for the quest program.
 *******************************************************************/
 #include <stdio.h>
-#include <stdiolib.h>
+#include <stdlib.h>
 #include "quest.h"
 
 int main() {
@@ -13,8 +13,9 @@ int main() {
 
     //read rows and columns from keyboard
     printf("Enter rows and Columns between 2 and 10 (inclusive)\n");
-    scanf(" %d %d", &rows, &columns); //See the spacing here. 
-        
+    scanf("%d %d", &rows, &columns); //See the spacing here. 
+    
+    printf("\nEnter the grid:\n");
     int grid[rows][columns];
 
     // Read the terrain grid
