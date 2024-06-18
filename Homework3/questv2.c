@@ -39,13 +39,15 @@ void generateNDisplayGrid(int rows, int columns, int grid[rows][columns])
 
 void findMax(int rows, int columns, int grid[rows][columns], int *max)
 {
+    int findMax = grid[i][j];
+
     for(int i = 0; i < rows; i++)
     {
         for(int j = 0; j < columns; j++)
         {
-            if(grid[i][j])
+            if(findMax < grid[i][j])
             {
-
+                findMax = grid[i][j];
             }
         }
     }
