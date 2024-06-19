@@ -32,23 +32,72 @@ void generateNDisplayGrid(int rows, int columns, int grid[rows][columns])
         for(int j = 0; j < columns; j++)
         {
             grid[i][j] = randomNum;
-            printf("%d\n", grid[i][j]);
+            printf("%d", grid[i][j]);
         }
+        printf("\n");
     }
 }
 
 void findMax(int rows, int columns, int grid[rows][columns], int *max)
 {
-    int findMax = grid[i][j];
+    *max = grid[i][j];
 
     for(int i = 0; i < rows; i++)
     {
         for(int j = 0; j < columns; j++)
         {
-            if(findMax < grid[i][j])
+            if(grid[i][j] > *max )
             {
-                findMax = grid[i][j];
+                *max = grid[i][j];
             }
         }
     }
+}
+
+int* computeStatsV2(int rows, int columns, int grid[rows][columns], int max)
+{
+    int *count = (int*)calloc(max +1, sizeof(int));
+    if(count == NULL)
+    {
+        printf(stderr, "Memory Allocation Failed\n");
+        exit(1);
+    }
+
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < columns; j++)
+        {
+            count[ grid[i][j] ]++;
+        }
+    }
+    return count;
+}
+
+void printStats(int *counts, int max)
+{
+    int frequency = 0;
+    for(;;)
+    {
+        printf("Please enter a frequency greater than 0: ");
+        scanf("%d", &frequency);
+
+        if(frequency > 0) break;
+    }
+
+    int result = 0;
+    for(int i = 0; i < max; i++)
+    {
+        if(counts[i] >= frequency)
+        {
+            printf("%d ", i);
+            found = 1;
+        }
+    }
+
+    if(!found) printf("No obstacles found!\n");
+}
+
+void freeStats(int *count)
+{
+    free(counts);
 }
