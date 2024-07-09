@@ -1,0 +1,41 @@
+Testcase 1
+./mygrep Way sample.txt
+Along the Way, he met a wise old sage,
+
+Testcase 2
+./mygrep Way sample.txt -n
+5 Along the Way, he met a wise old sage,
+
+Testcase 3
+./mygrep Way sample.txt -i
+Once upon a time, in a land far Far away,
+Along the Way, he met a wise old sage,
+
+Testcase 4
+./mygrep Way sample.txt -i -n
+1 Once upon a time, in a land far Far away,
+5 Along the Way, he met a wise old sage,
+
+Testcase 5
+./mygrep Way sample.txt -n -i
+1 Once upon a time, in a land far Far away,
+5 Along the Way, he met a wise old sage,
+
+Testcase 6
+./mygrep Way sample.txt -n -i /> out1.txt
+
+Testcase 7
+./mygrep Way
+Usage: grep <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number
+
+Testcase 8
+./mygrep
+Usage: grep <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number
+
+Testcase 9
+./mygrep Way sample.txt -
+Usage: grep <pattern> <filename> with optional [-i] for case insensitive search,  [-n] for line number
+
+Testcase 10
+./mygrep Way dummy.txt
+Error: Unable to open file 'dummy.txt'
