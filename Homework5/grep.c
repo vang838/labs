@@ -24,8 +24,8 @@ void performGrep(const char *pattern, const char *filename, int case_Insensitive
     FILE *file = fopen(filename, "r");
     if (!file) 
     {
-        fprintf(stderr, "Error: Unable to open file '%s'\n", filename);
-        exit(EXIT_FAILURE);
+        printf("Error: Unable to open file '%s'\n", filename);
+        return;
     }
 
     FILE *outputFile = NULL;
@@ -33,7 +33,7 @@ void performGrep(const char *pattern, const char *filename, int case_Insensitive
     {
         outputFile = fopen(outputFileName, "w");
         if (!outputFile) {
-            fprintf(stderr, "Error: Unable to open output file '%s'\n", outputFileName);
+            printf("Error: Unable to open output file '%s'\n", outputFileName);
             fclose(file);
             exit(EXIT_FAILURE);
         }
@@ -62,8 +62,8 @@ void performGrep(const char *pattern, const char *filename, int case_Insensitive
             line[strcspn(line, "\n")] = '\0';
             if (outputFile) 
             {
-                if (printLineNum) fprintf(outputFile, "%d: %s\n", lineNum, line);
-                else fprintf(outputFile, "%s\n", line);
+                if (printLineNum) printf("%d: %s\n", lineNum, line);
+                else printf("%s\n", line);
             } 
             
             else 
@@ -76,7 +76,7 @@ void performGrep(const char *pattern, const char *filename, int case_Insensitive
 
     if (!foundMatch) 
     {
-        if (outputFile) fprintf(outputFile, "No matches found for pattern \"%s\" in file %s\n", pattern, filename);
+        if (outputFile) printf("No matches found for pattern \"%s\" in file %s\n", pattern, filename);
         else printf("No matches found for pattern \"%s\" in file %s\n", pattern, filename);
     }
 
@@ -94,8 +94,8 @@ void grepLite(int argc, char *argv[])
 {
     if (argc < 3 || strlen(argv[1]) > MAX_PATTERN_LENGTH) 
     {
-        fprintf(stderr, "Usage: %s <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number\n", argv[0]);
-        exit(EXIT_FAILURE);
+        printf("Usage: %s <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number\n", argv[0]);
+        return;
     }
 
     int caseInsensitive = 0;
@@ -128,21 +128,21 @@ void grepLite(int argc, char *argv[])
             
             else 
             {
-                fprintf(stderr, "Error: Output file not specified after '>'.\n");
-                exit(EXIT_FAILURE);
+                printf("Error: Output file not specified after '>'.\n");
+                return;
             }
         } 
 
         else if (strcmp(argv[i], "-") == 0) 
         {
-            fprintf(stderr, "Usage: %s <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number\n", argv[0]);
-            exit(EXIT_FAILURE);
+            printf("Usage: %s <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number\n", argv[0]);
+            return;
         } 
         
         else 
         {
-            fprintf(stderr, "Usage: %s <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number\n", argv[0]);
-            exit(EXIT_FAILURE);
+            printf("Usage: %s <pattern> <filename> with optional [-i] for case insensitive search, [-n] for line number\n", argv[0]);
+            return;
         }
     }
 
