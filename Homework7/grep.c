@@ -1,5 +1,20 @@
+/********************************************
+ * Author: vang838@uwm.edu
+ * 
+ * Created: 7/23/24
+ *******************************************/
+
 #include "file.h"
 
+/*******************************************
+ * function grepPlus
+ * 
+ * Created by: vang838@uwm.edu
+ * 
+ * @param directory "." is defaulted to current directory user is in unless path is specified
+ * @param pattern String user wants to look for within the current/specified directory
+ * @param flag -i ( ignore case sensitive) or -n ( case sensitive )
+ ******************************************/
 void grepPlus(int argc, char *argv[]) 
 {
     if (argc < 4) 
