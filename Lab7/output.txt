@@ -1,0 +1,1 @@
+This line was redirected by redirectOutput.c
