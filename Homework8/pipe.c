@@ -32,7 +32,7 @@ void pipe_commands(int argc, char *argv[])
         error_exit("Error triggered on line 32: execvp");
     }
 
-    if( (pid2 -- fork() ) == -1 ) { error_exit("Error triggered on line 35: pid2 fork"); }
+    if( (pid2 == fork() ) == -1 ) { error_exit("Error triggered on line 35: pid2 fork"); }
     // TODO
     // if( pid2 == 0 ) {}
 }
